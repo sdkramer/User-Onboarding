@@ -16,15 +16,18 @@ function Form(props) {
       
 
       <label>Email:&nbsp;<input name='email'
-      type='text'/></label>
+      type='text'
+      onChange={onInputChange}/></label>
       
 
       <label>Password:&nbsp;<input name='password'
-      type='text'/></label>
+      type='text'
+      onChange={onInputChange}/></label>
       
 
       <label>Terms of Service:&nbsp;<input name='terms'
-      type='checkbox'/></label>
+      type='checkbox'
+      onChange={onInputChange}/></label>
      
 
         <button>Submit</button>

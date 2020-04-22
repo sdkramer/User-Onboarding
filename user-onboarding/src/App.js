@@ -25,7 +25,6 @@ function App() {
   const [formValues, setFormValues] = useState(initialFormValues)
 
   const onInputChange = event => {
-    debugger
 setFormValues(event.target.value)
   }
 
