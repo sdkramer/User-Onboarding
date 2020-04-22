@@ -11,7 +11,7 @@ const initialFormValues = {
   terms: false,
 }
 
-const intialUserList = {
+const initialUserList = {
   username: '',
   email: '',
   password: '',
@@ -20,12 +20,13 @@ const intialUserList = {
 
 function App() {
 
-  const [users, setUsers] = useState()
+  const [users, setUsers] = useState(initialUserList)
 
-  const [formValues, setFormValues] = useState()
+  const [formValues, setFormValues] = useState(initialFormValues)
 
   const onInputChange = event => {
-
+    debugger
+setFormValues(event.target.value)
   }
 
 
@@ -33,7 +34,8 @@ function App() {
     <div className="container-div">
       <header><h1>User Application</h1></header>
       
-      <Form />
+      <Form 
+      onInputChange={onInputChange}/>
 
       <UserList />
  

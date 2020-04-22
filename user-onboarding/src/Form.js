@@ -6,7 +6,7 @@ function Form(props) {
   } = props
   
   return (
-    <form>
+    <form className='container'>
       <div className='errors'></div>
 
       <label>Username:&nbsp;<input name='username'
