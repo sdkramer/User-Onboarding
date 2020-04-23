@@ -12,20 +12,28 @@ const initialFormValues = {
 }
 
 const initialUserList = {
-  username: '',
-  email: '',
-  password: '',
+  username: 'Tim',
+  email: 't@tim.com',
+  password: 'af45g*o',
   terms: false,
+}
+
+const onSubmit = (event) => {
+event.preventDefault()
 }
 
 function App() {
 
   const [users, setUsers] = useState(initialUserList)
+ 
 
   const [formValues, setFormValues] = useState(initialFormValues)
-
+  console.log(formValues)
   const onInputChange = event => {
-setFormValues(event.target.value)
+    const name = event.target.name
+    const value = event.target.value
+setFormValues({...formValues,
+[name]: value})
   }
 
 
@@ -34,9 +42,13 @@ setFormValues(event.target.value)
       <header><h1>User Application</h1></header>
       
       <Form 
-      onInputChange={onInputChange}/>
+        values={formValues}
+        onInputChange={onInputChange}
+      />
 
-      <UserList />
+      <UserList 
+        users={users}
+      />
  
     </div>
   );
