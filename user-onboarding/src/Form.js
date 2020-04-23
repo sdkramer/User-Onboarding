@@ -7,7 +7,7 @@ function Form(props) {
   } = props
   
   return (
-    <form className='container'>
+    <form className='container' onSubmit={onSubmit}>
       <div className='errors'></div>
 
       <label>Username:&nbsp;<input name='username'
