@@ -1,44 +1,58 @@
-import React from 'react';
+import React from "react";
 
 function Form(props) {
-  const {
-    onInputChange,
-    values
-  } = props
-  
+  const { onInputChange, values } = props;
+
   return (
-    <form className='container' onSubmit={onSubmit}>
-      <div className='errors'></div>
-
-      <label>Username:&nbsp;<input name='username'
-      type='text'
-      values={values.username}
-      onChange={onInputChange}
-      /></label>
-      
-
-      <label>Email:&nbsp;<input name='email'
-      type='text'
-      values={values.email}
-      onChange={onInputChange}/></label>
-      
-
-      <label>Password:&nbsp;<input name='password'
-      type='text'
-      values={values.password}
-      onChange={onInputChange}/></label>
-      
-
-      <label>Terms of Service:&nbsp;<input name='terms'
-      type='checkbox'
-      values={values.terms}
-      onChange={onInputChange}/></label>
-     
-
+    <form className="form-container">
+      <p className="clearfix">
+        <label>Username</label>
+        <input
+          className="input-field"
+          name="username"
+          type="text"
+          placeholder="Username"
+          values={values.username}
+          onChange={onInputChange}
+        />
+      </p>
+      <p className="clearfix">
+        <label>Email</label>
+        <input
+          className="input-field"
+          name="email"
+          type="text"
+          placeholder="Email"
+          values={values.email}
+          onChange={onInputChange}
+        />
+      </p>
+      <p className="clearfix">
+        <label>Password</label>
+        <input
+          className="input-field"
+          name="password"
+          type="text"
+          placeholder="Password"
+          values={values.password}
+          onChange={onInputChange}
+        />
+      </p>
+      <p className="clearfix check">
+        <label>Terms of Service</label>
+        <input
+          className="input-field"
+          name="terms"
+          type="checkbox"
+          values={values.terms}
+          onChange={onInputChange}
+        />
+      </p>
+      <p className="clearfix">
         <button>Submit</button>
-
+      </p>
     </form>
-  )
+  );
 }
 
-export default Form
+export default Form;
