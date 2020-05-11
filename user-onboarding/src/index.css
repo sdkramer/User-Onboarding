@@ -147,9 +147,9 @@ code {
     left: 45px;
 
     /* Styles */
-    /* transform: rotate(60deg);
+    transform: rotate(60deg);
     background: linear-gradient(80deg, rgba(50, 49, 49, 0.15), rgba(0,0,0,0));
-    pointer-events: none; */
+    pointer-events: none;
 }
 
 
