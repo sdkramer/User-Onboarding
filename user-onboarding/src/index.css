@@ -23,9 +23,9 @@ code {
 
 .form-container {
   font-family: 'Ubuntu', 'Lato', sans-serif;
-  font-weight: 400;
+  font-weight: 600;
   /* Size and position */
-  width: 300px;
+  width: 400px;
   position: relative;
   margin: 60px auto 30px;
   padding: 10px;
@@ -60,11 +60,11 @@ code {
 
 .form-container input {
       /* Size and position */
-      width: 50%;
-      float: left;
+      width: 48%;
+      float: right;
       padding: 8px 5px;    /* Size and position */
-      width: 50%;
-      float: left;
+      width: 48%;
+      float: right;
       padding: 8px 5px;
       margin-bottom: 10px;
       font-size: 12px;
@@ -129,7 +129,7 @@ code {
         width: 8px;
         height: 5px;
         position: absolute;
-        left: 34%;
+        left: 42%;
         top: -7px;
         
         /* Styles */
@@ -140,14 +140,14 @@ code {
   .form-container p:nth-child(1):before{
     /* Size and position */
     content: "";
-    width: 250px;
-    height: 100px;
+    width: 350px;
+    height: 230px;
     position: absolute;
     top: 0;
-    left: 45px;
+    left: 130px;
 
     /* Styles */
-    transform: rotate(60deg);
+    transform: rotate(85deg);
     background: linear-gradient(80deg, rgba(50, 49, 49, 0.15), rgba(0,0,0,0));
     pointer-events: none;
 }

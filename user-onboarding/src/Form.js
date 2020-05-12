@@ -6,7 +6,7 @@ function Form(props) {
   return (
     <form className="form-container">
       <p className="clearfix">
-        <label>Username</label>
+        <label htmlFor='username'>Username</label>
         <input
           className="input-field"
           name="username"
@@ -17,7 +17,7 @@ function Form(props) {
         />
       </p>
       <p className="clearfix">
-        <label>Email</label>
+        <label htmlFor='email'>Email</label>
         <input
           className="input-field"
           name="email"
@@ -28,7 +28,7 @@ function Form(props) {
         />
       </p>
       <p className="clearfix">
-        <label>Password</label>
+        <label htmlFor='password'>Password</label>
         <input
           className="input-field"
           name="password"
@@ -39,12 +39,12 @@ function Form(props) {
         />
       </p>
       <p className="clearfix check">
-        <label>Terms of Service</label>
+        <label htmlFor='terms'>Terms of Service</label>
         <input
           className="input-field"
           name="terms"
           type="checkbox"
-          values={values.terms}
+          checked={values.terms}
           onChange={onInputChange}
         />
       </p>

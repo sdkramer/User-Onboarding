@@ -4,12 +4,20 @@ import UserList from './UserList'
 import axios from 'axios'
 import * as yup from 'yup'
 
+const formSchema = yup.object().shape({
+  username: yup.string().required('Please enter name'),
+  email: yup.string().email('Must be a valid email').required('Please enter your email address'),
+  password: yup.string().min(7, 'Password must include at least 7 characters').required('Please enter your password'),
+  terms: yup.boolean().oneOf([true], 'You must accept the terms to continue'),
+
+})
+
 
 const initialFormValues = {
   username: '',
   email: '',
   password: '',
-  terms: false,
+  terms: '',
 }
 
 const initialUserList = {
