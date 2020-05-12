@@ -10,7 +10,28 @@ const formSchema = yup.object().shape({
   password: yup.string().min(7, 'Password must include at least 7 characters').required('Please enter your password'),
   terms: yup.boolean().oneOf([true], 'You must accept the terms to continue'),
 
-})
+});
+
+const [errorState, setErrorState] = useState({
+  username: '',
+  email: '',
+  password: '',
+  terms: '',
+});
+
+const validate = event => {
+  yup.reach(formSchema, event.target.name)
+  .validate(event.target.value)
+  .then(valid => {
+    setErrorState({...errorState, [event.target.name]: ''})
+  })
+  .catch(err => {
+    setErrorState({
+      ...errorState, [event.target.name]: err.errorState[0]
+    })
+  })
+}
+
 
 
 const initialFormValues = {
@@ -39,6 +60,7 @@ function App() {
   const [formValues, setFormValues] = useState(initialFormValues)
   console.log(formValues)
   const onInputChange = event => {
+    event.persist();
     const name = event.target.name
     const value = event.target.value
 setFormValues({...formValues,
