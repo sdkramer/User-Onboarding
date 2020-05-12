@@ -12,6 +12,28 @@ const formSchema = yup.object().shape({
 
 });
 
+function App() {
+
+  const initialFormValues = {
+    username: '',
+    email: '',
+    password: '',
+    terms: '',
+  }
+  
+  const initialUserList = {
+    username: 'Tim',
+    email: 't@tim.com',
+    password: 'af45g*o',
+    terms: false,
+  }
+
+  const [users, setUsers] = useState(initialUserList)
+ 
+
+  const [formValues, setFormValues] = useState(initialFormValues)
+  console.log(formValues)
+
 const [errorState, setErrorState] = useState({
   username: '',
   email: '',
@@ -26,43 +48,30 @@ const validate = event => {
     setErrorState({...errorState, [event.target.name]: ''})
   })
   .catch(err => {
+    console.log(err.errors)
     setErrorState({
-      ...errorState, [event.target.name]: err.errorState[0]
+      ...errorState, [event.target.name]: err.errors[0]
     })
   })
 }
 
-
-
-const initialFormValues = {
-  username: '',
-  email: '',
-  password: '',
-  terms: '',
-}
-
-const initialUserList = {
-  username: 'Tim',
-  email: 't@tim.com',
-  password: 'af45g*o',
-  terms: false,
-}
-
 const onSubmit = (event) => {
-event.preventDefault()
+event.preventDefault();
+console.log('submitted');
+axios.post('https://reqres.in/api/users', formValues)
+.then(response => console.log(response.data))
+.catch(err => console.log(err))
 }
 
-function App() {
 
-  const [users, setUsers] = useState(initialUserList)
- 
 
-  const [formValues, setFormValues] = useState(initialFormValues)
-  console.log(formValues)
+
+
   const onInputChange = event => {
     event.persist();
+    validate(event);
     const name = event.target.name
-    const value = event.target.value
+    const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value;
 setFormValues({...formValues,
 [name]: value})
   }
@@ -75,6 +84,7 @@ setFormValues({...formValues,
       <Form 
         values={formValues}
         onInputChange={onInputChange}
+        onSubmit={onSubmit}
       />
 
       <UserList 

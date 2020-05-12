@@ -1,10 +1,10 @@
 import React from "react";
 
 function Form(props) {
-  const { onInputChange, values } = props;
+  const { onInputChange, values, onSubmit } = props;
 
   return (
-    <form className="form-container">
+    <form className="form-container" onSubmit = {onSubmit}>
       <p className="clearfix">
         <label htmlFor='username'>Username</label>
         <input
