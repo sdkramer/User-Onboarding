@@ -1,7 +1,7 @@
 import React from "react";
 
 function Form(props) {
-  const { onInputChange, values, onSubmit } = props;
+  const { onInputChange, values, onSubmit, errorState } = props;
 
   return (
     <form className="form-container" onSubmit = {onSubmit}>
@@ -15,9 +15,14 @@ function Form(props) {
           values={values.username}
           onChange={onInputChange}
         />
+        {errorState.username.length > 0 ? (<p classname='error'>{errorState.username}</p>): null}
       </p>
       <p className="clearfix">
-        <label htmlFor='email'>Email</label>
+        <label htmlFor='email'>Email
+        {errorState.email.length > 0 ? (
+          <p className="error">{errorState.email}</p>
+        ) : null}
+        </label>
         <input
           className="input-field"
           name="email"
@@ -25,7 +30,7 @@ function Form(props) {
           placeholder="Email"
           values={values.email}
           onChange={onInputChange}
-        />
+        />   
       </p>
       <p className="clearfix">
         <label htmlFor='password'>Password</label>
@@ -39,7 +44,11 @@ function Form(props) {
         />
       </p>
       <p className="clearfix check">
-        <label htmlFor='terms'>Terms of Service</label>
+        <label htmlFor='terms'>Terms of Service
+        {errorState.terms.length > 0 ? (
+          <p className="error">{errorState.terms}</p>
+        ) : null}
+        </label>
         <input
           className="input-field"
           name="terms"
