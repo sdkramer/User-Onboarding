@@ -6,7 +6,9 @@ function Form(props) {
   return (
     <form className="form-container" onSubmit = {onSubmit}>
       <p className="clearfix">
-        <label htmlFor='username'>Username</label>
+        <label htmlFor='username'>Username
+        {errorState.username.length > 0 ? (<p className='error'>{errorState.username}</p>): null}
+        </label>
         <input
           className="input-field"
           name="username"
@@ -15,7 +17,7 @@ function Form(props) {
           values={values.username}
           onChange={onInputChange}
         />
-        {errorState.username.length > 0 ? (<p classname='error'>{errorState.username}</p>): null}
+
       </p>
       <p className="clearfix">
         <label htmlFor='email'>Email
@@ -33,7 +35,10 @@ function Form(props) {
         />   
       </p>
       <p className="clearfix">
-        <label htmlFor='password'>Password</label>
+        <label htmlFor='password'>Password
+        {errorState.password.length > 0 ? (
+          <p className="error">{errorState.password}</p>): null}
+        </label>
         <input
           className="input-field"
           name="password"
@@ -55,6 +60,7 @@ function Form(props) {
           type="checkbox"
           checked={values.terms}
           onChange={onInputChange}
+          value={values.terms}
         />
       </p>
       <p className="clearfix">

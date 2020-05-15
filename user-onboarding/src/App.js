@@ -14,7 +14,7 @@ const formSchema = yup.object().shape({
     .string()
     .min(7, "Password must include at least 7 characters")
     .required("Please enter your password"),
-  terms: yup.boolean().oneOf([true], "You must accept the terms to continue"),
+  terms: yup.boolean().required("Please accept terms").oneOf([true], "You must accept the terms to continue"),
 });
 
 function App() {
@@ -26,9 +26,9 @@ function App() {
   };
 
   const initialUserList = {
-    username: "Tim",
-    email: "t@tim.com",
-    password: "af45g*o",
+    username: "",
+    email: "",
+    password: "",
     terms: false,
   };
 
@@ -43,6 +43,10 @@ function App() {
     password: "",
     terms: "",
   });
+
+  const [post, setPost] = useState([]);
+
+
 
   const validate = (event) => {
     yup
@@ -60,17 +64,28 @@ function App() {
       });
   };
 
+  
+
   const onSubmit = (event) => {
     event.preventDefault();
     console.log("submitted");
+
     axios
       .post("https://reqres.in/api/users", formValues)
-      .then((response) => console.log(response.data))
-      .catch((err) => console.log(err));
+      .then(response => {
+        console.log(response.data)
+setPost(response.data);
+      }
+      
+)
+      .catch(err => console.log(err))
   };
 
   const onInputChange = (event) => {
+
+    console.log(event);
     event.persist();
+    
     validate(event);
     const name = event.target.name;
     const value =
@@ -78,12 +93,14 @@ function App() {
         ? event.target.checked
         : event.target.value;
     setFormValues({ ...formValues, [name]: value });
+    setUsers({...users, [name]: value})
   };
 
   return (
     <div className="container-div">
       <header>
         <h1>User Application</h1>
+        <pre>{JSON.stringify(post, null, 2)}</pre>
       </header>
 
       <Form
@@ -94,6 +111,7 @@ function App() {
       />
 
       <UserList users={users} />
+      
     </div>
   );
 }

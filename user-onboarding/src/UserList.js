@@ -7,9 +7,9 @@ function UserList (props){
     <div className='form-container user-container'>
       {Object.values(props).map(user => (
         <div className='details' key={user.password}>
-          <h2>Name:{user.username} </h2>
-          <p>Email:{user.email} </p>
-          <p>Password:{user.password} </p>
+          <h2>Name: {user.username} </h2>
+          <p>Email: {user.email} </p>
+          <p>Password: {user.password} </p>
         </div>
       ))}
     </div>)
